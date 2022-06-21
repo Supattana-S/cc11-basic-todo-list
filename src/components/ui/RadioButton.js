@@ -9,7 +9,7 @@ function RadioButton(props) {
       />
       <label
         className={`btn btn-${props.color || "outline-primary"} shadow-none`}
-        HTMLfor={props.id}
+        htmlFor={props.id}
       >
         {props.children}
       </label>
