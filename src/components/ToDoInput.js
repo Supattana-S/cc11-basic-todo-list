@@ -2,6 +2,7 @@ import Button from "./ui/Button";
 
 function ToDoInput() {
   return (
+    <>
     <div class="input-group">
       <input
         type="text"
@@ -16,6 +17,8 @@ function ToDoInput() {
         <i className="fa-solid fa-xmark" />
       </Button>
     </div>
+    <small></small>
+    </>
   );
 }
 
