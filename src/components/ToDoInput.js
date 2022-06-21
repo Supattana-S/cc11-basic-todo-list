@@ -17,7 +17,7 @@ function ToDoInput() {
         <i className="fa-solid fa-xmark" />
       </Button>
     </div>
-    <small></small>
+    {/* <small className="text-danger">Title is required.</small> */}
     </>
   );
 }
