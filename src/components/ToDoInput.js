@@ -12,6 +12,7 @@ function ToDoInput() {
       />
       <Button color="success">
         <i className="fa-solid fa-plus" />
+        {/* if don't have props.children the element <i></i>, won't be displayed */}
       </Button>
       <Button color="outline-secondary">
         <i className="fa-solid fa-xmark" />
