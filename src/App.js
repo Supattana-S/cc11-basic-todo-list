@@ -1,6 +1,7 @@
 import ToDoInput from "./components/ToDoInput";
 import Filter from "./components/filter/Filter";
 import PageLimit from "./components/page-limit/PageLimit";
+import ToDoList from "./components/todo-list/ToDoList";
 
 function App() {
   return (
@@ -8,6 +9,7 @@ function App() {
       <ToDoInput />
       <Filter />
       <PageLimit />
+      <ToDoList />
     </div>
   );
 }
