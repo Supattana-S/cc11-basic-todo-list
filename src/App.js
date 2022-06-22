@@ -1,4 +1,4 @@
-import { v4 as uuid4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import ToDoInput from "./components/todo-list/ToDoInput";
 import Filter from "./components/filter/Filter";
 import PageLimit from "./components/page-limit/PageLimit";
@@ -17,10 +17,11 @@ import Pagination from "./components/pagination/Pagination";
 // ];
 
 const initialTodoList = [
-  { title: "Sport", completed: true, id: 1 },
-  { title: "Gaming", completed: false, id: 3 },
-  { title: "Group Project", completed: true, id: 2 },
+  { title: "Sport", completed: true, id: uuidv4() },
+  { title: "Gaming", completed: false, id: uuidv4() },
+  { title: "Group Project", completed: true, id: uuidv4() },
 ];
+//uuidv4() will random unique string
 
 function App() {
   // create state in app to pass through state to children component in App.js
