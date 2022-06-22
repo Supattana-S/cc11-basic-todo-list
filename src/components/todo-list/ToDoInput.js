@@ -3,6 +3,7 @@ import Button from "../ui/Button";
 
 function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState("");
+  const [todoError, setTodoError] = useState('')
 
   // const resetTodoInput = () => {
   //   setTodoInput("");
@@ -18,7 +19,11 @@ function ToDoInput(props) {
           value={todoInput}
           onChange={(event) => setTodoInput(event.target.value)}
         />
-        <Button color="success" onClick={() => props.createTodo(todoInput)}>
+        <Button color="success" onClick={() => {
+          if(!todoInput) {
+            
+          }
+          props.createTodo(todoInput)}>
           <i className="fa-solid fa-plus" />
           {/* if don't have props.children the element <i></i>, won't be displayed */}
         </Button>
@@ -26,7 +31,7 @@ function ToDoInput(props) {
           <i className="fa-solid fa-xmark" />
         </Button>
       </div>
-      {/* <small className="text-danger">Title is required.</small> */}
+      <small className="text-danger">Title is required.</small>
     </>
   );
 }
