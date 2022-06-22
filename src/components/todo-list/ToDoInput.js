@@ -1,6 +1,9 @@
+import { useState } from "react";
 import Button from "../ui/Button";
 
-function ToDoInput() {
+function ToDoInput(props) {
+  const [todoInput, setTodoInput] = useState("");
+
   return (
     <>
       <div className="input-group">
@@ -8,6 +11,8 @@ function ToDoInput() {
           type="text"
           className="form-control shadow"
           placeholder="Enter new todo"
+          value={todoInput}
+          onChange={(event) => setTodoInput(event.target.value)}
         />
         <Button color="success">
           <i className="fa-solid fa-plus" />
