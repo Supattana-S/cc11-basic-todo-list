@@ -23,6 +23,8 @@ const initialTodoList = [
 ];
 //uuidv4() will random unique string
 
+console.log(initialTodoList);
+
 function App() {
   // create state in app to pass through state to children component in App.js
   //because almost all component in App.js need to use todolist
