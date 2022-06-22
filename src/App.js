@@ -33,6 +33,13 @@ function App() {
 
   const [todoList, setTodoList] = useState(initialTodoList);
 
+  const createTodo = title => {
+    const newTodo = { title, completed: false, id: uuidv4()}
+    const oldTodoList = [...todoList]
+    oldTodoList.unshift(newTodo)
+    setTodoList(oldTodoList)
+  }
+
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput  />
