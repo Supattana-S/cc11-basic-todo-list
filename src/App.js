@@ -9,12 +9,26 @@ import Pagination from "./components/pagination/Pagination";
 //   completed: true,
 // };
 
-const todoList = [
-  { title: "Homework", completed: true },
-  { title: "Mid term examp", completed: false },
+// const todolist = [
+//   { title: "Sport", completed: true, id: 1 },
+//   { title: "Gaming", completed: false, id: 3 },
+//   { title: "Group Project", completed: true, id: 2 },
+// ];
+
+const initialTodoList = [
+  { title: "Sport", completed: true, id: 1 },
+  { title: "Gaming", completed: false, id: 3 },
+  { title: "Group Project", completed: true, id: 2 },
 ];
 
 function App() {
+
+  // create state in app to pass through state to children component in App.js
+  //because almost all component in App.js need to use todolist
+  //React concept: State pass thorugh the parent component to children component
+
+
+
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput />
