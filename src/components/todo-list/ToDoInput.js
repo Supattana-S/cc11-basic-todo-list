@@ -18,7 +18,7 @@ function ToDoInput(props) {
           value={todoInput}
           onChange={(event) => setTodoInput(event.target.value)}
         />
-        <Button color="success">
+        <Button color="success" onClick={() => props.createTodo(todoInput)}>
           <i className="fa-solid fa-plus" />
           {/* if don't have props.children the element <i></i>, won't be displayed */}
         </Button>
