@@ -4,9 +4,9 @@ import Button from "../ui/Button";
 function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState("");
 
-  const resetTodoInput = () => {
-    setTodoInput('')
-  }
+  // const resetTodoInput = () => {
+  //   setTodoInput("");
+  // };
 
   return (
     <>
@@ -22,7 +22,7 @@ function ToDoInput(props) {
           <i className="fa-solid fa-plus" />
           {/* if don't have props.children the element <i></i>, won't be displayed */}
         </Button>
-        <Button color="outline-secondary">
+        <Button color="outline-secondary" onClick={() => setTodoInput("")}>
           <i className="fa-solid fa-xmark" />
         </Button>
       </div>
