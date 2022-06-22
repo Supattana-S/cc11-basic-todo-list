@@ -20,7 +20,7 @@ import Pagination from "./components/pagination/Pagination";
 const initialTodoList = [
   { title: "Sport", completed: true, id: uuidv4() },
   { title: "Gaming", completed: false, id: uuidv4() },
-  { title: "Group Project", completed: true, id: uuidv4() },
+  { title: "Entertain", completed: true, id: uuidv4() },
 ];
 //uuidv4() will random unique string
 
@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div className="container max-w-xs pt-5">
-      <ToDoInput />
+      <ToDoInput  />
       <Filter />
       <PageLimit />
       <ToDoList todoList={todoList} />
