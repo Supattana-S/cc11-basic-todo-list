@@ -42,7 +42,7 @@ function App() {
 
   return (
     <div className="container max-w-xs pt-5">
-      <ToDoInput  />
+      <ToDoInput createTodo={createTodo} />
       <Filter />
       <PageLimit />
       <ToDoList todoList={todoList} />
