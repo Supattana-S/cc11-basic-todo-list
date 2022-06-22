@@ -38,7 +38,7 @@ function App() {
       <ToDoInput />
       <Filter />
       <PageLimit />
-      <ToDoList />
+      <ToDoList todoList={todoList} />
       <Pagination />
     </div>
   );
