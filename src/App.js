@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ToDoInput from "./components/todo-list/ToDoInput";
 import Filter from "./components/filter/Filter";
@@ -23,12 +24,14 @@ const initialTodoList = [
 ];
 //uuidv4() will random unique string
 
-console.log(initialTodoList);
+// console.log(initialTodoList);
 
 function App() {
   // create state in app to pass through state to children component in App.js
   //because almost all component in App.js need to use todolist
   //React concept: State pass thorugh the parent component to children component
+
+  const [todoList, setTodoList] = useState(initialTodoList);
 
   return (
     <div className="container max-w-xs pt-5">
