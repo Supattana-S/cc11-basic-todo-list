@@ -4,6 +4,10 @@ import Button from "../ui/Button";
 function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState("");
 
+  const resetTodoInput = () => {
+    setTodoInput('')
+  }
+
   return (
     <>
       <div className="input-group">
