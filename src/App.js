@@ -1,3 +1,4 @@
+import { v4 as uuid4 } from "uuid";
 import ToDoInput from "./components/todo-list/ToDoInput";
 import Filter from "./components/filter/Filter";
 import PageLimit from "./components/page-limit/PageLimit";
@@ -22,12 +23,9 @@ const initialTodoList = [
 ];
 
 function App() {
-
   // create state in app to pass through state to children component in App.js
   //because almost all component in App.js need to use todolist
   //React concept: State pass thorugh the parent component to children component
-
-
 
   return (
     <div className="container max-w-xs pt-5">
