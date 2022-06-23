@@ -9,6 +9,16 @@ function ToDoInput(props) {
   //   setTodoInput("");
   // };
 
+  const handleClickCreateBtn = () => {
+    if (!todoInput) {
+      setTodoError("Title is required.");
+    } else {
+      props.createTodo(todoInput);
+      setTodoError("");
+      setTodoInput("");
+    }
+  };
+
   return (
     <>
       <div className="input-group">
@@ -19,18 +29,7 @@ function ToDoInput(props) {
           value={todoInput}
           onChange={(event) => setTodoInput(event.target.value)}
         />
-        <Button
-          color="success"
-          onClick={() => {
-            if (!todoInput) {
-              setTodoError("Title is required.");
-            } else {
-              props.createTodo(todoInput);
-              setTodoError("");
-              setTodoInput('')
-            }
-          }}
-        >
+        <Button color="success" onClick={handleClickCreateBtn}>
           <i className="fa-solid fa-plus" />
           {/* if don't have props.children the element <i></i>, won't be displayed */}
         </Button>
