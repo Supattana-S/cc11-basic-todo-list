@@ -3,7 +3,7 @@ import Button from "../ui/Button";
 
 function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState("");
-  const [todoError, setTodoError] = useState('')
+  const [todoError, setTodoError] = useState("");
 
   // const resetTodoInput = () => {
   //   setTodoInput("");
@@ -14,16 +14,23 @@ function ToDoInput(props) {
       <div className="input-group">
         <input
           type="text"
-          className="form-control shadow"
+          className={`form-control ${todoError ? "is-invalid" : ""}`}
           placeholder="Enter new todo"
           value={todoInput}
           onChange={(event) => setTodoInput(event.target.value)}
         />
-        <Button color="success" onClick={() => {
-          if(!todoInput) {
-            
-          }
-          props.createTodo(todoInput)}>
+        <Button
+          color="success"
+          onClick={() => {
+            if (!todoInput) {
+              setTodoError("Title is required.");
+            } else {
+              props.createTodo(todoInput);
+              setTodoError("");
+              setTodoInput('')
+            }
+          }}
+        >
           <i className="fa-solid fa-plus" />
           {/* if don't have props.children the element <i></i>, won't be displayed */}
         </Button>
@@ -31,7 +38,7 @@ function ToDoInput(props) {
           <i className="fa-solid fa-xmark" />
         </Button>
       </div>
-      <small className="text-danger">Title is required.</small>
+      {todoError && <small className="text-danger">{todoError}</small>}
     </>
   );
 }
