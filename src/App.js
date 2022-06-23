@@ -35,8 +35,9 @@ function App() {
 
   const createTodo = title => {
     const newTodo = { title, completed: false, id: uuidv4()}
-    const oldTodoList = [...todoList]
-    oldTodoList.unshift(newTodo)
+    // const oldTodoList = [...todoList]
+    // oldTodoList.unshift(newTodo)
+    const oldTodoList = [newTodo, ...todoList]
     setTodoList(oldTodoList)
   }
 
