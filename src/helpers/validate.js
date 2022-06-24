@@ -17,7 +17,7 @@ function validateRegister(email, username, phoneNumber) {
 }
 
 function isRequired(value) {
-  return !!!value;
+  return !value;
 }
 
 function checkLength(value, length) {
