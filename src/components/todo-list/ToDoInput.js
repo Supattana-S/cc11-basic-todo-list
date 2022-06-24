@@ -20,8 +20,32 @@ function ToDoInput(props) {
     setInput(oldInput);
   };
 
+  const handleSubmitForm = (e) => {
+    e.preventDefault(); // to prevent sending data to server, REeact will use JS to send again next.
+    const newError = {};
+
+    if (!input.email) {
+      newError.email = "Email is required";
+    }
+
+    if (!input.username) {
+      newError.username = "Username is required";
+    }
+
+    if (!input.phoneNumber) {
+      newError.phoneNumber = "Phone Number is required";
+    } else if (input.phoneNumber.length !== 10) {
+      newError.phoneNumber = "Invalid Phone number format";
+    }
+
+    if (Object.keys(newError).length > 0) {
+      setError(newError);
+    } else {
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmitForm}>
       <div className="mb-3">
         <label htmlFor="email1" className="form-label">
           Email address
