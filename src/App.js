@@ -50,12 +50,30 @@ function App() {
     }
   };
 
+  //newValue will be liek {title, completed}
+  // updateTodo({title: 'Meeting'}, '6ydgsakjl')
+  const updateTodo = (newValue, id) => {
+    const idx = todoList.findIndex((el) => el.id === id);
+    if (idx !== -1) {
+      const cloneTodoList = [...todoList];
+      cloneTodoList[idx] = {...cloneTodoList[idx], ...newValue}; 
+      //if they send only 'title', the other will remain.
+      //{ title: "Entertain", completed: true, id: uuidv4() } merge {title: 'Meeting'}
+      //{ title: "Entertain", completed: true, id: uuidv4(), title: 'Meeting'}
+      //{ title: "Meeting", completed: true, id: uuidv4()} <== right one will have high priority.
+      setTodoList(cloneTodoList);
+    }
+  };
+
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput createTodo={createTodo} />
       <Filter />
       <PageLimit />
-      <ToDoList todoList={todoList} removeTodo={removeTodo}/>
+      <ToDoList
+        todoList={todoList}
+        removeTodo={removeTodo}
+      />
       <Pagination />
     </div>
   );
