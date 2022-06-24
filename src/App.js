@@ -73,6 +73,7 @@ function App() {
       <ToDoList
         todoList={todoList}
         removeTodo={removeTodo}
+        updateTodo={updateTodo}
       />
       <Pagination />
     </div>

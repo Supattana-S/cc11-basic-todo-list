@@ -10,6 +10,7 @@ function ToDoList(props) {
           title={el.title}
           completed={el.completed}
           removeTodo={props.removeTodo}
+          updateTodo={props.updateTodo}
         />
       ))}
     </ul>
