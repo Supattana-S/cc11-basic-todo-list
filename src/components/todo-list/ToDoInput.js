@@ -58,9 +58,7 @@ function ToDoInput(props) {
           value={input.email}
           onChange={handleChangeInput}
         />
-        {/* <small className="text-danger">
-          We'll never share your email with anyone else.
-        </small> */}
+        {error.email && <small className="text-danger">{error.email}</small>}
       </div>
       <div className="mb-3">
         <label htmlFor="username" className="form-label">
@@ -74,9 +72,9 @@ function ToDoInput(props) {
           value={input.username}
           onChange={handleChangeInput}
         />
-        {/* <small className="text-danger">
-          We'll never share your email with anyone else.
-        </small> */}
+        {error.username && (
+          <small className="text-danger">{error.username}</small>
+        )}
       </div>
       <div className="mb-3">
         <label htmlFor="phonenumber" className="form-label">
@@ -90,9 +88,9 @@ function ToDoInput(props) {
           value={input.phoneNumber}
           onChange={handleChangeInput}
         />
-        {/* <small className="text-danger">
-          We'll never share your email with anyone else.
-        </small> */}
+        {error.phoneNumber && (
+          <small className="text-danger">{error.phoneNumber}</small>
+        )}
       </div>
       <button type="submit" className="btn btn-primary">
         Submit
