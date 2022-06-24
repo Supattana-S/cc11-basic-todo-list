@@ -33,13 +33,22 @@ function App() {
 
   const [todoList, setTodoList] = useState(initialTodoList);
 
-  const createTodo = title => {
-    const newTodo = { title, completed: false, id: uuidv4()}
+  const createTodo = (title) => {
+    const newTodo = { title, completed: false, id: uuidv4() };
     // const oldTodoList = [...todoList]
     // oldTodoList.unshift(newTodo)
-    const newTodoList = [newTodo, ...todoList]
-    setTodoList(newTodoList)
-  }
+    const newTodoList = [newTodo, ...todoList];
+    setTodoList(newTodoList);
+  };
+
+  const removeTodo = (id) => {
+    const idx = todoList.findIndex((el) => el.id === id);
+    if (idx !== -1) {
+      const cloneTodoList = [...todoList];
+      cloneTodoList.splice(idx, 1);
+      setTodoList(cloneTodoList);
+    }
+  };
 
   return (
     <div className="container max-w-xs pt-5">
