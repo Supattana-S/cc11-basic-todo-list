@@ -10,7 +10,7 @@ function validateRegister(email, username, phoneNumber) {
 
   if (isRequired(phoneNumber)) {
     newError.phoneNumber = "Phone Number is required";
-  } else if (phoneNumber.length !== 10) {
+  } else if (checkLength(phoneNumber, 10)) {
     newError.phoneNumber = "Invalid Phone number format";
   }
   return newError;
@@ -18,6 +18,10 @@ function validateRegister(email, username, phoneNumber) {
 
 function isRequired(value) {
   return !!!value;
+}
+
+function checkLength(value, length) {
+  return value.length === length;
 }
 
 export { validateRegister };
