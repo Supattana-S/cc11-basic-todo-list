@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validateRegister } from "../../helpers/validate";
 import Button from "../ui/Button";
 
 function ToDoInput(props) {
@@ -22,21 +23,12 @@ function ToDoInput(props) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault(); // to prevent sending data to server, REeact will use JS to send again next.
-    const newError = {};
 
-    if (!input.email) {
-      newError.email = "Email is required";
-    }
-
-    if (!input.username) {
-      newError.username = "Username is required";
-    }
-
-    if (!input.phoneNumber) {
-      newError.phoneNumber = "Phone Number is required";
-    } else if (input.phoneNumber.length !== 10) {
-      newError.phoneNumber = "Invalid Phone number format";
-    }
+    const newError = validateRegister(
+      input.email,
+      input.username,
+      input.phoneNumber
+    );
 
     if (Object.keys(newError).length > 0) {
       setError(newError);
