@@ -14,6 +14,12 @@ function ToDoInput(props) {
     phoneNumber: "",
   });
 
+  const handleChangeInput = (e) => {
+    const oldInput = { ...input };
+    oldInput[e.target.name] = e.target.value;
+    setInput(oldInput);
+  };
+
   return (
     <form>
       <div className="mb-3">
@@ -24,12 +30,9 @@ function ToDoInput(props) {
           type="email"
           className="form-control"
           id="email"
+          name="email"
           value={input.email}
-          onChange={(event) => {
-            const oldInput = { ...input };
-            oldInput.email = event.target.value;
-            setInput(oldInput);
-          }}
+          onChange={handleChangeInput}
         />
         {/* <small className="text-danger">
           We'll never share your email with anyone else.
@@ -43,12 +46,9 @@ function ToDoInput(props) {
           type="text"
           className="form-control"
           id="username"
+          name="username"
           value={input.username}
-          onChange={(event) => {
-            const oldInput = { ...input };
-            oldInput.username = event.target.value;
-            setInput(oldInput);
-          }}
+          onChange={handleChangeInput}
         />
         {/* <small className="text-danger">
           We'll never share your email with anyone else.
@@ -62,12 +62,9 @@ function ToDoInput(props) {
           type="text"
           className="form-control"
           id="exampleCheck1"
+          name="phoneNumber"
           value={input.phoneNumber}
-          onChange={(event) => {
-            const oldInput = { ...input };
-            oldInput.phoneNumber = event.target.value;
-            setInput(oldInput);
-          }}
+          onChange={handleChangeInput}
         />
         {/* <small className="text-danger">
           We'll never share your email with anyone else.
