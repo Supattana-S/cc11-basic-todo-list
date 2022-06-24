@@ -55,7 +55,7 @@ function App() {
       <ToDoInput createTodo={createTodo} />
       <Filter />
       <PageLimit />
-      <ToDoList todoList={todoList} />
+      <ToDoList todoList={todoList} removeTodo={removeTodo}/>
       <Pagination />
     </div>
   );
