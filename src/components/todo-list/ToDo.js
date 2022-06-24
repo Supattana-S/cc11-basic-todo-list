@@ -1,7 +1,7 @@
 import Button from "../ui/Button";
 
 function ToDo(props) {
-  const { title, completed, id } = props;
+  const { title, completed, id, removeTodo, updateTodo } = props;
   return (
     <li
       className={`list-group-item d-flex align-items-center p-3 bd-callout bd-callout-${
@@ -12,10 +12,13 @@ function ToDo(props) {
         {title}
       </span>
       <div className="btn-group">
-        <Button color="outline-info">
+        <Button
+          color="outline-info"
+          onClick={() => updateTodo({ completed: !completed }, id)}
+        >
           <i className={`fa-solid fa-toggle-${completed ? "on" : "off"}`} />
         </Button>
-        <Button color="danger" onClick={() => props.removeTodo(id)}>
+        <Button color="danger" onClick={() => removeTodo(id)}>
           <i className="fa-regular fa-trash-can" />
         </Button>
       </div>
