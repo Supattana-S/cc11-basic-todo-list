@@ -21,7 +21,7 @@ function isRequired(value) {
 }
 
 function checkLength(value, length) {
-  return value.length === length;
+  return value.length !== length;
 }
 
 export { validateRegister };
