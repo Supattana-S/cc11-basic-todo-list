@@ -41,6 +41,7 @@ function ToDoInput(props) {
     if (Object.keys(newError).length > 0) {
       setError(newError);
     } else {
+      setError({});
     }
   };
 
