@@ -5,40 +5,39 @@ function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState("");
   const [todoError, setTodoError] = useState("");
 
-  // const resetTodoInput = () => {
-  //   setTodoInput("");
-  // };
-
-  const handleClickCreateBtn = () => {
-    if (!todoInput) {
-      setTodoError("Title is required.");
-    } else {
-      props.createTodo(todoInput);
-      setTodoError("");
-      setTodoInput("");
-    }
-  };
-
   return (
-    <>
-      <div className="input-group">
-        <input
-          type="text"
-          className={`form-control ${todoError ? "is-invalid" : ""}`}
-          placeholder="Enter new todo"
-          value={todoInput}
-          onChange={(event) => setTodoInput(event.target.value)}
-        />
-        <Button color="success" onClick={handleClickCreateBtn}>
-          <i className="fa-solid fa-plus" />
-          {/* if don't have props.children the element <i></i>, won't be displayed */}
-        </Button>
-        <Button color="outline-secondary" onClick={() => setTodoInput("")}>
-          <i className="fa-solid fa-xmark" />
-        </Button>
+    <form>
+      <div className="mb-3">
+        <label htmlFor="email1" className="form-label">
+          Email address
+        </label>
+        <input type="email" className="form-control" id="email" />
+        {/* <small className="text-danger">
+          We'll never share your email with anyone else.
+        </small> */}
       </div>
-      {todoError && <small className="text-danger">{todoError}</small>}
-    </>
+      <div className="mb-3">
+        <label htmlFor="username" className="form-label">
+          Username
+        </label>
+        <input type="text" className="form-control" id="username" />
+        {/* <small className="text-danger">
+          We'll never share your email with anyone else.
+        </small> */}
+      </div>
+      <div className="mb-3">
+        <label htmlFor="phonenumber" className="form-label">
+          Phone Number
+        </label>
+        <input type="text" className="form-control" id="exampleCheck1" />
+        {/* <small className="text-danger">
+          We'll never share your email with anyone else.
+        </small> */}
+      </div>
+      <button type="submit" className="btn btn-primary">
+        Submit
+      </button>
+    </form>
   );
 }
 
