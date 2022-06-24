@@ -46,13 +46,13 @@ function ToDoInput(props) {
 
   return (
     <form onSubmit={handleSubmitForm}>
-      <div className="mb-3">
+      <div className={`mb-3`}>
         <label htmlFor="email1" className="form-label">
           Email address
         </label>
         <input
           type="email"
-          className="form-control"
+          className={`form-control ${error.email && "is-invalid"}`}
           id="email"
           name="email"
           value={input.email}
@@ -66,7 +66,7 @@ function ToDoInput(props) {
         </label>
         <input
           type="text"
-          className="form-control"
+          className={`form-control ${error.username && "is-invalid"}`}
           id="username"
           name="username"
           value={input.username}
@@ -82,7 +82,7 @@ function ToDoInput(props) {
         </label>
         <input
           type="text"
-          className="form-control"
+          className={`form-control ${error.phoneNumber && "is-invalid"}`}
           id="exampleCheck1"
           name="phoneNumber"
           value={input.phoneNumber}
