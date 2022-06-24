@@ -33,21 +33,21 @@ function App() {
 
   const [todoList, setTodoList] = useState(initialTodoList);
 
-  const createTodo = title => {
-    const newTodo = { title, completed: false, id: uuidv4()}
+  const createTodo = (title) => {
+    const newTodo = { title, completed: false, id: uuidv4() };
     // const oldTodoList = [...todoList]
     // oldTodoList.unshift(newTodo)
-    const newTodoList = [newTodo, ...todoList]
-    setTodoList(newTodoList)
-  }
+    const newTodoList = [newTodo, ...todoList];
+    setTodoList(newTodoList);
+  };
 
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput createTodo={createTodo} />
-      <Filter />
+      {/* <Filter />
       <PageLimit />
       <ToDoList todoList={todoList} />
-      <Pagination />
+      <Pagination /> */}
     </div>
   );
 }
