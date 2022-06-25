@@ -30,7 +30,11 @@ function ToDoInput(props) {
           onChange={(event) => setTodoInput(event.target.value)}
         />
         <Button color="success" onClick={handleClickCreateBtn}>
-          <i className="fa-solid fa-plus" />
+          {props.mode === "edit" ? (
+            <i className="fa-solid fa-check" />
+          ) : (
+            <i className="fa-solid fa-plus" />
+          )}
           {/* if don't have props.children the element <i></i>, won't be displayed */}
         </Button>
         <Button color="outline-secondary" onClick={() => setTodoInput("")}>

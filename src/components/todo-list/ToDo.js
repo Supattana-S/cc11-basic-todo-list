@@ -23,7 +23,7 @@ function ToDo(props) {
           <i className="fa-regular fa-trash-can" />
         </Button>
       </div> */}
-      <ToDoInput />
+      <ToDoInput mode='edit' />
     </li>
   );
 }
