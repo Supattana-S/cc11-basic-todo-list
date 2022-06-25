@@ -1,4 +1,5 @@
 import Button from "../ui/Button";
+import ToDoInput from "./ToDoInput";
 
 function ToDo(props) {
   const { title, completed, id, removeTodo, updateTodo } = props;
@@ -8,7 +9,7 @@ function ToDo(props) {
         completed ? "success" : "warning"
       }`}
     >
-      <span className="flex-grow-1" role="button">
+      {/* <span className="flex-grow-1" role="button">
         {title}
       </span>
       <div className="btn-group">
@@ -21,7 +22,8 @@ function ToDo(props) {
         <Button color="danger" onClick={() => removeTodo(id)}>
           <i className="fa-regular fa-trash-can" />
         </Button>
-      </div>
+      </div> */}
+      <ToDoInput />
     </li>
   );
 }
