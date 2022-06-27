@@ -4,29 +4,35 @@ import ToDoInput from "./ToDoInput";
 
 function ToDo(props) {
   const { title, completed, id, removeTodo, updateTodo } = props;
-  const [isEditing, setIsEditing] = useState(false)
-  
+
+  const [isEditing, setIsEditing] = useState(false);
+
   return (
     <li
       className={`list-group-item d-flex align-items-center p-3 bd-callout bd-callout-${
         completed ? "success" : "warning"
       }`}
     >
-      {/* <span className="flex-grow-1" role="button">
-        {title}
-      </span>
-      <div className="btn-group">
-        <Button
-          color="outline-info"
-          onClick={() => updateTodo({ completed: !completed }, id)}
-        >
-          <i className={`fa-solid fa-toggle-${completed ? "on" : "off"}`} />
-        </Button>
-        <Button color="danger" onClick={() => removeTodo(id)}>
-          <i className="fa-regular fa-trash-can" />
-        </Button>
-      </div> */}
-      <ToDoInput id={id} title={title} />
+      {isEditing ? (
+        <ToDoInput id={id} title={title} />
+      ) : (
+        <>
+          <span className="flex-grow-1" role="button">
+            {title}
+          </span>
+          <div className="btn-group">
+            <Button
+              color="outline-info"
+              onClick={() => updateTodo({ completed: !completed }, id)}
+            >
+              <i className={`fa-solid fa-toggle-${completed ? "on" : "off"}`} />
+            </Button>
+            <Button color="danger" onClick={() => removeTodo(id)}>
+              <i className="fa-regular fa-trash-can" />
+            </Button>
+          </div>
+        </>
+      )}
     </li>
   );
 }
