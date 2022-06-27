@@ -93,7 +93,7 @@ function App() {
       />
       <PageLimit />
       <ToDoList
-        todoList={todoList}
+        todoList={filteredTodoList}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
