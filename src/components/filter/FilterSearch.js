@@ -11,7 +11,7 @@ function FilterSearch(props) {
         value={searchTerm}
         onChange={(e) => changeSearchTerm(e.target.value)}
       />
-      <Button color="dark">
+      <Button color="dark" onClick={() => changeSearchTerm("")}>
         <i className="fa-solid fa-xmark" />
       </Button>
     </div>
