@@ -8,17 +8,22 @@ function ToDo(props) {
   const [isEditing, setIsEditing] = useState(false);
 
   const closeEditing = () => {
-    setIsEditing(false)
-  }
+    setIsEditing(false);
+  };
 
   return (
     <li
-      className={`list-group-item d-flex align-items-center p-3 bd-callout bd-callout-${
-        completed ? "success" : "warning"
-      }`}
+      className={`list-group-item d-flex ${
+        isEditing ? "" : "align-items-center"
+      } p-3 bd-callout bd-callout-${completed ? "success" : "warning"} ${isEditing ? 'flex-column' : ''}`}
     >
       {isEditing ? (
-        <ToDoInput id={id} title={title} closeEditing={closeEditing} updateTodo={updateTodo} />
+        <ToDoInput
+          id={id}
+          title={title}
+          closeEditing={closeEditing}
+          updateTodo={updateTodo}
+        />
       ) : (
         <>
           <span
