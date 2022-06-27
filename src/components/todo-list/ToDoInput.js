@@ -19,6 +19,15 @@ function ToDoInput(props) {
     }
   };
 
+  const handleClickUpdateBtn = () => {
+    if (!todoInput) {
+      setTodoError("Title is required.");
+    } else {
+      props.updateTodo({ title: todoInput }, props.id);
+      props.closeEditing();
+    }
+  };
+
   return (
     <>
       <div className="input-group">
@@ -30,7 +39,7 @@ function ToDoInput(props) {
           onChange={(event) => setTodoInput(event.target.value)}
         />
         {props.id ? (
-          <Button color="primary">
+          <Button color="primary" onClick={handleClickUpdateBtn}>
             <i className="fa-solid fa-check" />
           </Button>
         ) : (
