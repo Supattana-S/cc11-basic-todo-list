@@ -73,7 +73,7 @@ function App() {
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput createTodo={createTodo} />
-      <Filter changeSearchStatus={changeSearchStatus} />
+      <Filter changeSearchStatus={changeSearchStatus} searchStatus={searchStatus}/>
       <PageLimit />
       <ToDoList
         todoList={todoList}

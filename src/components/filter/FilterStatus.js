@@ -8,6 +8,7 @@ function FilterStatus(props) {
         id="all"
         color="outline-dark"
         onChange={() => props.changeSearchStatus("ALL")}
+        defaultCheck={props.searchStatus === 'ALL'}
       >
         <i className="fa-solid fa-list" />
       </RadioButton>
