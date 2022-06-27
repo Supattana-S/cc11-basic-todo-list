@@ -70,10 +70,26 @@ function App() {
     setSearchStatus(value);
   };
 
+  let filteredTodoList = [];
+  switch (searchStatus) {
+    case "COMPLETED": {
+      filteredTodoList = todoList.filter((el) => el.completed);
+      break;
+    }
+    case "PENDING": {
+      filteredTodoList = todoList.filter((el) => !el.completed);
+      break;
+    }
+    default:
+  }
+
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput createTodo={createTodo} />
-      <Filter changeSearchStatus={changeSearchStatus} searchStatus={searchStatus}/>
+      <Filter
+        changeSearchStatus={changeSearchStatus}
+        searchStatus={searchStatus}
+      />
       <PageLimit />
       <ToDoList
         todoList={todoList}
