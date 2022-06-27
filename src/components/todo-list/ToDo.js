@@ -17,7 +17,11 @@ function ToDo(props) {
         <ToDoInput id={id} title={title} />
       ) : (
         <>
-          <span className="flex-grow-1" role="button">
+          <span
+            className="flex-grow-1"
+            role="button"
+            onClick={() => setIsEditing(true)}
+          >
             {title}
           </span>
           <div className="btn-group">
