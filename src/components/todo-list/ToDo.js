@@ -18,7 +18,7 @@ function ToDo(props) {
       }`}
     >
       {isEditing ? (
-        <ToDoInput id={id} title={title}  />
+        <ToDoInput id={id} title={title} closeEditing={closeEditing} />
       ) : (
         <>
           <span
