@@ -32,6 +32,7 @@ function App() {
   //React concept: State pass thorugh the parent component to children component
 
   const [todoList, setTodoList] = useState(initialTodoList);
+  const [searchStatus, setSearchStatus] = useState('ALL')
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
