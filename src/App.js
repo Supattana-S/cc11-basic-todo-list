@@ -36,7 +36,7 @@ function App() {
   // ALL => null
   // COMPLETED => true
   // PENDING => false
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState("");
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
@@ -74,9 +74,9 @@ function App() {
     setSearchStatus(value);
   };
 
-  const changeSearchTerm = value => {
-    setSearchTerm(value)
-  }
+  const changeSearchTerm = (value) => {
+    setSearchTerm(value);
+  };
 
   // let filteredTodoList = [];
   // switch (searchStatus) {
@@ -92,7 +92,13 @@ function App() {
   //     filteredTodoList = [...todoList];
   // }
 
-  const filteredTodoList = todoList.filter(el => searchStatus === null || el.completed === searchStatus)
+  const filteredTodoList = todoList.filter(
+    (el) => searchStatus === null || el.completed === searchStatus
+  );
+  
+  const filteredTodoList2 = filteredTodoList.filter((el) =>
+    el.title.includes(searchTerm)
+  );
 
   return (
     <div className="container max-w-xs pt-5">
