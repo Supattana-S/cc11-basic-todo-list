@@ -81,6 +81,7 @@ function App() {
       break;
     }
     default:
+      filteredTodoList = [...todoList];
   }
 
   return (
