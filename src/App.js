@@ -100,7 +100,8 @@ function App() {
       <Filter
         changeSearchStatus={changeSearchStatus}
         searchStatus={searchStatus}
-        setSearchTerm={setSearchTerm}
+        changeSearchTerm={changeSearchTerm}
+        searchTerm={searchTerm}
       />
       <PageLimit />
       <ToDoList
