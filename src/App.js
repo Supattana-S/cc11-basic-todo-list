@@ -32,7 +32,10 @@ function App() {
   //React concept: State pass thorugh the parent component to children component
 
   const [todoList, setTodoList] = useState(initialTodoList);
-  const [searchStatus, setSearchStatus] = useState("ALL");
+  const [searchStatus, setSearchStatus] = useState(null);
+  // ALL => null
+  // COMPLETED => true
+  // PENDING => false
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
@@ -70,19 +73,21 @@ function App() {
     setSearchStatus(value);
   };
 
-  let filteredTodoList = [];
-  switch (searchStatus) {
-    case "COMPLETED": {
-      filteredTodoList = todoList.filter((el) => el.completed);
-      break;
-    }
-    case "PENDING": {
-      filteredTodoList = todoList.filter((el) => !el.completed);
-      break;
-    }
-    default:
-      filteredTodoList = [...todoList];
-  }
+  // let filteredTodoList = [];
+  // switch (searchStatus) {
+  //   case "COMPLETED": {
+  //     filteredTodoList = todoList.filter((el) => el.completed);
+  //     break;
+  //   }
+  //   case "PENDING": {
+  //     filteredTodoList = todoList.filter((el) => !el.completed);
+  //     break;
+  //   }
+  //   default:
+  //     filteredTodoList = [...todoList];
+  // }
+
+  const filteredTodoList = todoList.filter(el => searchStatus === null || el.completed === searchStatus)
 
   return (
     <div className="container max-w-xs pt-5">

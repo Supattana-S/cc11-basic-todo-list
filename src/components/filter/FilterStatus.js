@@ -7,8 +7,8 @@ function FilterStatus(props) {
         name="status"
         id="all"
         color="outline-dark"
-        onChange={() => props.changeSearchStatus("ALL")}
-        defaultChecked={props.searchStatus === "ALL"}
+        onChange={() => props.changeSearchStatus(null)}
+        defaultChecked={props.searchStatus === null}
       >
         <i className="fa-solid fa-list" />
       </RadioButton>
@@ -16,8 +16,8 @@ function FilterStatus(props) {
         name="status"
         id="completed"
         color="outline-dark"
-        onChange={() => props.changeSearchStatus("COMPLETED")}
-        defaultChecked={props.searchStatus === "COMPLETED"}
+        onChange={() => props.changeSearchStatus(true)}
+        defaultChecked={props.searchStatus === true}
       >
         <i className="fa-solid fa-clipboard-check" />
       </RadioButton>
@@ -25,8 +25,8 @@ function FilterStatus(props) {
         name="status"
         id="pending"
         color="outline-dark"
-        onChange={() => props.changeSearchStatus("PENDING")}
-        defaultChecked={props.searchStatus === "PENDING"}
+        onChange={() => props.changeSearchStatus(false)}
+        defaultChecked={props.searchStatus === false}
       >
         <i className="fa-regular fa-clipboard" />
       </RadioButton>
