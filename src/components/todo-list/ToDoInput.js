@@ -39,7 +39,16 @@ function ToDoInput(props) {
           </Button>
         )}
 
-        <Button color="outline-secondary" onClick={() => setTodoInput("")}>
+        <Button
+          color="outline-secondary"
+          onClick={() => {
+            if (props.id) {
+              props.closeEditing();
+            } else {
+              setTodoInput("");
+            }
+          }}
+        >
           <i className="fa-solid fa-xmark" />
         </Button>
       </div>
