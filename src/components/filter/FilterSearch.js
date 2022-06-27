@@ -1,9 +1,16 @@
 import Button from "../ui/Button";
 
-function FilterSearch() {
+function FilterSearch(props) {
+  const { changeSearchTerm, searchTerm } = props;
   return (
     <div className="input-group shadow">
-      <input type="text" className="form-control" placeholder="Search" />
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Search"
+        value={searchTerm}
+        onChange={(e) => changeSearchTerm(e.target.value)}
+      />
       <Button color="dark">
         <i className="fa-solid fa-xmark" />
       </Button>
