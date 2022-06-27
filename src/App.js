@@ -36,6 +36,7 @@ function App() {
   // ALL => null
   // COMPLETED => true
   // PENDING => false
+  const [searchTerm, setSearchTerm] = useState('')
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
@@ -72,6 +73,10 @@ function App() {
   const changeSearchStatus = (value) => {
     setSearchStatus(value);
   };
+
+  const changeSearchTerm = value => {
+    setSearchTerm(value)
+  }
 
   // let filteredTodoList = [];
   // switch (searchStatus) {
