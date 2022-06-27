@@ -93,12 +93,8 @@ function App() {
   // }
 
   const filteredTodoList = todoList.filter(
-    (el) => searchStatus === null || el.completed === searchStatus
-  );
+    (el) => (searchStatus === null || el.completed === searchStatus) && el.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
-  const filteredTodoList2 = filteredTodoList.filter((el) =>
-    el.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
   return (
     <div className="container max-w-xs pt-5">
@@ -111,7 +107,7 @@ function App() {
       />
       <PageLimit />
       <ToDoList
-        todoList={filteredTodoList2}
+        todoList={filteredTodoList}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
