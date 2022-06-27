@@ -7,6 +7,10 @@ function ToDo(props) {
 
   const [isEditing, setIsEditing] = useState(false);
 
+  const closeEditing = () => {
+    setIsEditing(false)
+  }
+
   return (
     <li
       className={`list-group-item d-flex align-items-center p-3 bd-callout bd-callout-${
@@ -14,7 +18,7 @@ function ToDo(props) {
       }`}
     >
       {isEditing ? (
-        <ToDoInput id={id} title={title} />
+        <ToDoInput id={id} title={title}  />
       ) : (
         <>
           <span
