@@ -32,7 +32,7 @@ function App() {
   //React concept: State pass thorugh the parent component to children component
 
   const [todoList, setTodoList] = useState(initialTodoList);
-  const [searchStatus, setSearchStatus] = useState('ALL')
+  const [searchStatus, setSearchStatus] = useState("ALL");
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
@@ -57,7 +57,7 @@ function App() {
     const idx = todoList.findIndex((el) => el.id === id);
     if (idx !== -1) {
       const cloneTodoList = [...todoList];
-      cloneTodoList[idx] = {...cloneTodoList[idx], ...newValue}; 
+      cloneTodoList[idx] = { ...cloneTodoList[idx], ...newValue };
       //if they send only 'title', the other will remain.
       //{ title: "Entertain", completed: true, id: uuidv4() } merge {title: 'Meeting'}
       //{ title: "Entertain", completed: true, id: uuidv4(), title: 'Meeting'}
@@ -66,10 +66,14 @@ function App() {
     }
   };
 
+  const changeSearchStatus = (value) => {
+    setSearchStatus(value);
+  };
+
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput createTodo={createTodo} />
-      <Filter />
+      <Filter changeSearchStatus={changeSearchStatus} />
       <PageLimit />
       <ToDoList
         todoList={todoList}
