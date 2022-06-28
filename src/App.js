@@ -25,9 +25,9 @@ const initialTodoList = [
 //uuidv4() will random unique string
 
 const allPageLimit = [
-  { page: 10, id: uuidv4() },
-  { page: 20, id: uuidv4() },
-  { page: 50, id: uuidv4() },
+  { page: 1, id: uuidv4() },
+  { page: 2, id: uuidv4() },
+  { page: 5, id: uuidv4() },
 ];
 
 // console.log(initialTodoList);
@@ -43,7 +43,9 @@ function App() {
   // COMPLETED => true
   // PENDING => false
   const [searchTerm, setSearchTerm] = useState("");
-  const [numberPageLimit, setNumberPageLimit] = useState(allPageLimit);
+  const [currentShowNumber, setCurrentShowNumber] = useState(
+    allPageLimit[0].page
+  );
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
@@ -85,10 +87,9 @@ function App() {
     setSearchTerm(value);
   };
 
-  const changePageLimit = (value) => {
-    setNumberPageLimit(value);
+  const changeCurrentShowNumber = (value) => {
+    setCurrentShowNumber(value);
   };
-
   // let filteredTodoList = [];
   // switch (searchStatus) {
   //   case "COMPLETED": {
@@ -109,6 +110,8 @@ function App() {
       el.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const showTodoList = filteredTodoList.splice(0, currentShowNumber);
+
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput createTodo={createTodo} />
@@ -119,11 +122,12 @@ function App() {
         searchTerm={searchTerm}
       />
       <PageLimit
-        numberPageLimit={numberPageLimit}
-        changePageLimit={changePageLimit}
+        allPageLimit={allPageLimit}
+        currentShowNumber={currentShowNumber}
+        changeCurrentShowNumber={changeCurrentShowNumber}
       />
       <ToDoList
-        todoList={filteredTodoList}
+        todoList={showTodoList}
         removeTodo={removeTodo}
         updateTodo={updateTodo}
       />
