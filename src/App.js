@@ -26,11 +26,10 @@ function App() {
   // if use [] as dependency array, It'll render 1 time after render all thing from below.
   // but if use nothing as dependency array, It'll render infinite as before.
 
-  const createTodo = (title) => {
-    const newTodo = { title, completed: false, id: uuidv4() };
-    // const oldTodoList = [...todoList]
-    // oldTodoList.unshift(newTodo)
-    const newTodoList = [newTodo, ...todoList];
+  const createTodo = async (title) => {
+    const NewTodo = { title, completed: false };
+    const res = await axios.post("http://localhost:8080/todos", NewTodo);
+    const newTodoList = [res.data.todos, ...todoList];
     setTodoList(newTodoList);
   };
 
