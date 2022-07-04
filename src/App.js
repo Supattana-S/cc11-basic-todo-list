@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import ToDoInput from "./components/todo-list/ToDoInput";
@@ -12,24 +12,19 @@ import Pagination from "./components/pagination/Pagination";
 //   { title: "Gaming", completed: false, id: uuidv4() },
 //   { title: "Entertain", completed: true, id: uuidv4() },
 // ];
-let initialTodoList;
-
-axios.get("http://localhost:8080/todos").then((res) => {
-  initialTodoList = res.data.todos;
-  console.log(initialTodoList);
-});
 
 function App() {
-  // create state in app to pass through state to children component in App.js
-  //because almost all component in App.js need to use todolist
-  //React concept: State pass thorugh the parent component to children component
-
-  const [todoList, setTodoList] = useState(initialTodoList);
+  const [todoList, setTodoList] = useState([]);
   const [searchStatus, setSearchStatus] = useState(null);
-  // ALL => null
-  // COMPLETED => true
-  // PENDING => false
   const [searchTerm, setSearchTerm] = useState("");
+
+  useEffect(() => {}, []);
+
+  axios.get("http://localhost:8080/todos").then((res) => {
+    setTodoList(res.data.todos);
+    // if do this, will be infinite re-render
+    // evenif it's same array but it's another array. this will cause infinite re-render
+  });
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
