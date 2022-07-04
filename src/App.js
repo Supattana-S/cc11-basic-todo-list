@@ -23,7 +23,7 @@ function App() {
       setTodoList(res.data.todos);
     });
   }, []);
-  // if use [] as dependency array, It'll render 1 time at start.
+  // if use [] as dependency array, It'll render 1 time after render all thing from below.
   // but if use nothing as dependency array, It'll render infinite as before.
 
   const createTodo = (title) => {
