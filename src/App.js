@@ -18,13 +18,13 @@ function App() {
   const [searchStatus, setSearchStatus] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(() => {}, []);
-
-  axios.get("http://localhost:8080/todos").then((res) => {
-    setTodoList(res.data.todos);
-    // if do this, will be infinite re-render
-    // evenif it's same array but it's another array. this will cause infinite re-render
-  });
+  useEffect(() => {
+    axios.get("http://localhost:8080/todos").then((res) => {
+      setTodoList(res.data.todos);
+    });
+  }, []);
+  // if use [] as dependency array, It'll render 1 time at start.
+  // but if use nothing as dependency array, It'll render infinite as before.
 
   const createTodo = (title) => {
     const newTodo = { title, completed: false, id: uuidv4() };
