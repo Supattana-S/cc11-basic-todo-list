@@ -19,14 +19,25 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8080/todos").then((res) => {
-      setTodoList(res.data.todos);
-    });
+    try {
+      const fetchTodos = async () => {
+        const res = await axios.get("http://localhost:8080/todos");
+        setTodoList(res.data.todos);
+      };
+      fetchTodos();
+    } catch (err) {
+      console.log(err);
+    }
+
+    // axios.get("http://localhost:8080/todos").then((res) => {
+    //   setTodoList(res.data.todos);
+    // }).catch(err => {
+    //   console.log(err)
+    // })
   }, []);
   // if use [] as dependency array, It'll render 1 time after render all thing from below.
   // but if use nothing as dependency array, It'll render infinite as before.
 
-  console.log(todoList);
   const createTodo = async (title) => {
     try {
       const NewTodo = { title, completed: false };
@@ -38,10 +49,10 @@ function App() {
     }
   };
 
-  const removeTodo = async (id) => {
+  const removeTodo = (id) => {
     const idx = todoList.findIndex((el) => el.id === id);
     if (idx !== -1) {
-      const res = await axios.delete("http://localhost:8080/todos");
+      // const res = await axios.delete("http://localhost:8080/todos");
       const cloneTodoList = [...todoList];
       cloneTodoList.splice(idx, 1);
       setTodoList(cloneTodoList);
