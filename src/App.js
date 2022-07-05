@@ -53,7 +53,7 @@ function App() {
     try {
       await axios.delete("http://localhost:8080/todos/" + id);
       // const res = await axios.get("http://localhost:8080/todos");
-      // setTodoList(res.data.todo);
+      // setTodoList(res.data.todo); // this way, we get data from backend
     } catch (err) {
       console.log(err);
     }
@@ -61,21 +61,26 @@ function App() {
     if (idx !== -1) {
       const cloneTodoList = [...todoList];
       cloneTodoList.splice(idx, 1);
-      setTodoList(cloneTodoList);
+      setTodoList(cloneTodoList); //this way, we delete at backend and delete at frontend
     }
   };
   //newValue will be liek {title, completed}
   // updateTodo({title: 'Meeting'}, '6ydgsakjl')
-  const updateTodo = (newValue, id) => {
-    const idx = todoList.findIndex((el) => el.id === id);
-    if (idx !== -1) {
-      const cloneTodoList = [...todoList];
-      cloneTodoList[idx] = { ...cloneTodoList[idx], ...newValue };
-      //if they send only 'title', the other will remain.
-      //{ title: "Entertain", completed: true, id: uuidv4() } merge {title: 'Meeting'}
-      //{ title: "Entertain", completed: true, id: uuidv4(), title: 'Meeting'}
-      //{ title: "Meeting", completed: true, id: uuidv4()} <== right one will have high priority.
-      setTodoList(cloneTodoList);
+  const updateTodo = async (newValue, id) => {
+    try {
+      const res = await axios.put(
+        "http://localhost:8080/todos/" + id,
+        newValue
+      );
+
+      const idx = todoList.findIndex((el) => el.id === id);
+      if (idx !== -1) {
+        const cloneTodoList = [...todoList];
+        cloneTodoList[idx] = { ...cloneTodoList[idx], ...newValue };
+        setTodoList(cloneTodoList);
+      }
+    } catch (err) {
+      console.log(err);
     }
   };
 

@@ -15,7 +15,9 @@ function ToDo(props) {
     <li
       className={`list-group-item d-flex ${
         isEditing ? "" : "align-items-center"
-      } p-3 bd-callout bd-callout-${completed ? "success" : "warning"} ${isEditing ? 'flex-column' : ''}`}
+      } p-3 bd-callout bd-callout-${completed ? "success" : "warning"} ${
+        isEditing ? "flex-column" : ""
+      }`}
     >
       {isEditing ? (
         <ToDoInput
@@ -23,6 +25,7 @@ function ToDo(props) {
           title={title}
           closeEditing={closeEditing}
           updateTodo={updateTodo}
+          completed={completed}
         />
       ) : (
         <>
