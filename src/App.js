@@ -72,15 +72,14 @@ function App() {
         "http://localhost:8080/todos/" + id,
         newValue
       );
-
-      const idx = todoList.findIndex((el) => el.id === id);
-      if (idx !== -1) {
-        const cloneTodoList = [...todoList];
-        cloneTodoList[idx] = { ...cloneTodoList[idx], ...newValue };
-        setTodoList(cloneTodoList);
-      }
     } catch (err) {
       console.log(err);
+    }
+    const idx = todoList.findIndex((el) => el.id === id);
+    if (idx !== -1) {
+      const cloneTodoList = [...todoList];
+      cloneTodoList[idx] = { ...cloneTodoList[idx], ...newValue };
+      setTodoList(cloneTodoList);
     }
   };
 
