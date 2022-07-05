@@ -52,11 +52,16 @@ function App() {
   const removeTodo = async (id) => {
     try {
       await axios.delete("http://localhost:8080/todos/" + id);
-      const res = await axios.get("http://localhost:8080/todos");
-      const cloneTodoList = [...res.data.todos];
-      setTodoList(cloneTodoList);
+      // const res = await axios.get("http://localhost:8080/todos");
+      // setTodoList(res.data.todo);
     } catch (err) {
       console.log(err);
+    }
+    const idx = todoList.findIndex((el) => el.id === id);
+    if (idx !== -1) {
+      const cloneTodoList = [...todoList];
+      cloneTodoList.splice(idx, 1);
+      setTodoList(cloneTodoList);
     }
   };
   //newValue will be liek {title, completed}
