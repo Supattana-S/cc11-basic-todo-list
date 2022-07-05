@@ -42,7 +42,7 @@ function App() {
     try {
       const NewTodo = { title, completed: false };
       const res = await axios.post("http://localhost:8080/todos", NewTodo);
-      const newTodoList = [res.data.todos, ...todoList];
+      const newTodoList = [res.data.todo, ...todoList];
       setTodoList(newTodoList);
     } catch (err) {
       console.log(err);
