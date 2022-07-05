@@ -49,16 +49,16 @@ function App() {
     }
   };
 
-  const removeTodo = (id) => {
-    const idx = todoList.findIndex((el) => el.id === id);
-    if (idx !== -1) {
-      // const res = await axios.delete("http://localhost:8080/todos");
-      const cloneTodoList = [...todoList];
-      cloneTodoList.splice(idx, 1);
+  const removeTodo = async (id) => {
+    try {
+      await axios.delete("http://localhost:8080/todos/" + id);
+      const res = await axios.get("http://localhost:8080/todos");
+      const cloneTodoList = [...res.data.todos];
       setTodoList(cloneTodoList);
+    } catch (err) {
+      console.log(err);
     }
   };
-
   //newValue will be liek {title, completed}
   // updateTodo({title: 'Meeting'}, '6ydgsakjl')
   const updateTodo = (newValue, id) => {
