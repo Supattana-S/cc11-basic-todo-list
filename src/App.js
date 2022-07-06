@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="container max-w-xs pt-5">
       <ToDoInput />
-      <Filter />
-      <PageLimit />
+      {/* <Filter /> */}
+      {/* <PageLimit /> */}
       <ToDoList />
-      <Pagination />
+      {/* <Pagination /> */}
     </div>
   );
 }

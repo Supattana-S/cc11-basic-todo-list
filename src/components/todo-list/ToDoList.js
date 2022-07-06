@@ -3,16 +3,16 @@ import ToDo from "./ToDo";
 function ToDoList(props) {
   return (
     <ul className="list-group shadow mt-4">
-      {props.todoList.map((el) => (
-        <ToDo
-          key={el.id}
-          id={el.id}
-          title={el.title}
-          completed={el.completed}
-          removeTodo={props.removeTodo}
-          updateTodo={props.updateTodo}
-        />
-      ))}
+      <ToDo
+        key={1}
+        id={1}
+        title={"a"}
+        completed={true}
+        // removeTodo={props.removeTodo}
+        // updateTodo={props.updateTodo}
+      />
+      {/* {props.todoList.map((el) => (
+      ))} */}
     </ul>
   );
 }

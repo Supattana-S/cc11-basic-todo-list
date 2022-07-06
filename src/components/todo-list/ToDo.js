@@ -3,7 +3,7 @@ import Button from "../ui/Button";
 import ToDoInput from "./ToDoInput";
 
 function ToDo(props) {
-  const { title, completed, id, removeTodo, updateTodo } = props;
+  const { title, completed, id } = props;
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -24,7 +24,7 @@ function ToDo(props) {
           id={id}
           title={title}
           closeEditing={closeEditing}
-          updateTodo={updateTodo}
+          // updateTodo={updateTodo}
           completed={completed}
         />
       ) : (
@@ -39,13 +39,16 @@ function ToDo(props) {
           <div className="btn-group">
             <Button
               color="outline-info"
-              onClick={() =>
-                updateTodo({ completed: !completed, title: title }, id)
-              }
+              // onClick={() =>
+              //   updateTodo({ completed: !completed, title: title }, id)
+              // }
             >
               <i className={`fa-solid fa-toggle-${completed ? "on" : "off"}`} />
             </Button>
-            <Button color="danger" onClick={() => removeTodo(id)}>
+            <Button
+              color="danger"
+              // onClick={() => removeTodo(id)}
+            >
               <i className="fa-regular fa-trash-can" />
             </Button>
           </div>
