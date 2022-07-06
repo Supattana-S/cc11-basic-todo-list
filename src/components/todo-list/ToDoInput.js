@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { ToDoContext } from "../../contexts/ToDoContext";
 import Button from "../ui/Button";
 
 function ToDoInput(props) {
+  const { createTodo } = useContext(ToDoContext);
   const [todoInput, setTodoInput] = useState(props.title || "");
   const [todoError, setTodoError] = useState("");
 
@@ -13,6 +16,7 @@ function ToDoInput(props) {
     if (!todoInput) {
       setTodoError("Title is required.");
     } else {
+      createTodo(todoInput);
       // props.createTodo(todoInput);
       setTodoError("");
       setTodoInput("");

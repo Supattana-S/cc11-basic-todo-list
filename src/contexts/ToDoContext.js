@@ -18,8 +18,21 @@ function ToDoContextProvider(props) {
     }
   }, []);
 
+  const createTodo = async (title) => {
+    const newTodo = { title, completed: false };
+
+    try {
+      const res = await axios.post("http://localhost:8080/todos", newTodo);
+    } catch (err) {
+      console.log(err);
+    }
+
+    const cloneTodoList = [newTodo, ...todoList];
+    setTodoList(cloneTodoList);
+  };
+
   return (
-    <ToDoContext.Provider value={{ todoList, setTodoList }}>
+    <ToDoContext.Provider value={{ todoList, createTodo }}>
       {props.children}
     </ToDoContext.Provider>
   );
