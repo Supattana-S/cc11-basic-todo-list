@@ -5,6 +5,7 @@ const ToDoContext = createContext();
 
 function ToDoContextProvider(props) {
   const [todoList, setTodoList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     try {
@@ -63,9 +64,25 @@ function ToDoContextProvider(props) {
     }
   };
 
+  const changeSearchTerm = (value) => {
+    setSearchTerm(value);
+  };
+
+  const filteredTodoList = todoList.filter((el) => {
+    return el.title.toLowerCase().includes(searchTerm.toLowerCase());
+  });
+
   return (
     <ToDoContext.Provider
-      value={{ todoList, createTodo, updateTodo, deleteTodo }}
+      value={{
+        todoList,
+        createTodo,
+        updateTodo,
+        deleteTodo,
+        searchTerm,
+        changeSearchTerm,
+        filteredTodoList,
+      }}
     >
       {props.children}
     </ToDoContext.Provider>

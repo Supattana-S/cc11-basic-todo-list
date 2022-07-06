@@ -12,7 +12,7 @@ function App() {
     <div className="container max-w-xs pt-5">
       <ToDoContextProvider>
         <ToDoInput />
-        {/* <Filter /> */}
+        <Filter />
         {/* <PageLimit /> */}
         <ToDoList />
         {/* <Pagination /> */}
