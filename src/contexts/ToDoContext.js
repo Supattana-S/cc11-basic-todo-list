@@ -1,4 +1,4 @@
-import { useContext, useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect } from "react";
 import axios from "axios";
 
 const ToDoContext = createContext();
@@ -46,8 +46,25 @@ function ToDoContextProvider(props) {
     }
   };
 
+  const deleteTodo = async (id) => {
+    try {
+      await axios.delete(`http://localhost:8080/todos/${id}`);
+    } catch (err) {
+      console.log(err);
+    }
+
+    const idx = todoList.findIndex((el) => el.id === id);
+    if (idx !== -1) {
+      const cloneTodoList = [...todoList];
+      cloneTodoList.splice(idx, 1);
+      setTodoList(cloneTodoList);
+    }
+  };
+
   return (
-    <ToDoContext.Provider value={{ todoList, createTodo, updateTodo }}>
+    <ToDoContext.Provider
+      value={{ todoList, createTodo, updateTodo, deleteTodo }}
+    >
       {props.children}
     </ToDoContext.Provider>
   );

@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 import ToDoInput from "./ToDoInput";
 
 function ToDo(props) {
-  const { updateTodo } = useContext(ToDoContext);
+  const { updateTodo, deleteTodo } = useContext(ToDoContext);
   const { title, completed, id } = props;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -51,6 +51,7 @@ function ToDo(props) {
             </Button>
             <Button
               color="danger"
+              onClick={() => deleteTodo(id)}
               // onClick={() => removeTodo(id)}
             >
               <i className="fa-regular fa-trash-can" />
