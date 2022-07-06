@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ToDoContext } from "../../contexts/ToDoContext";
+
 import Button from "../ui/Button";
 import ToDoInput from "./ToDoInput";
 
 function ToDo(props) {
+  const { updateTodo } = useContext(ToDoContext);
   const { title, completed, id } = props;
 
   const [isEditing, setIsEditing] = useState(false);
@@ -39,6 +42,7 @@ function ToDo(props) {
           <div className="btn-group">
             <Button
               color="outline-info"
+              onClick={() => updateTodo({ completed: !completed, title }, id)}
               // onClick={() =>
               //   updateTodo({ completed: !completed, title: title }, id)
               // }

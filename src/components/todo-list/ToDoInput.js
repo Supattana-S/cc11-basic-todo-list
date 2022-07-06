@@ -4,13 +4,9 @@ import { ToDoContext } from "../../contexts/ToDoContext";
 import Button from "../ui/Button";
 
 function ToDoInput(props) {
-  const { createTodo } = useContext(ToDoContext);
+  const { createTodo, updateTodo } = useContext(ToDoContext);
   const [todoInput, setTodoInput] = useState(props.title || "");
   const [todoError, setTodoError] = useState("");
-
-  // const resetTodoInput = () => {
-  //   setTodoInput("");
-  // };
 
   const handleClickCreateBtn = () => {
     if (!todoInput) {
@@ -27,6 +23,7 @@ function ToDoInput(props) {
     if (!todoInput) {
       setTodoError("Title is required.");
     } else {
+      updateTodo({ title: todoInput, completed: props.completed }, props.id);
       // props.updateTodo(
       //   { title: todoInput, completed: props.completed },
       //   props.id

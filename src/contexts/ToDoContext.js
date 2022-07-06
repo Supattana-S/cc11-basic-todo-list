@@ -31,8 +31,23 @@ function ToDoContextProvider(props) {
     setTodoList(cloneTodoList);
   };
 
+  const updateTodo = async (newValue, id) => {
+    try {
+      await axios.put(`http://localhost:8080/todos/${id}`, newValue);
+    } catch (err) {
+      console.log(err);
+    }
+
+    const idx = todoList.findIndex((el) => el.id === id);
+    if (idx !== -1) {
+      const cloneTodoList = [...todoList];
+      cloneTodoList[idx] = { ...cloneTodoList[idx], ...newValue };
+      setTodoList(cloneTodoList);
+    }
+  };
+
   return (
-    <ToDoContext.Provider value={{ todoList, createTodo }}>
+    <ToDoContext.Provider value={{ todoList, createTodo, updateTodo }}>
       {props.children}
     </ToDoContext.Provider>
   );

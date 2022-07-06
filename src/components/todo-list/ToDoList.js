@@ -13,12 +13,8 @@ function ToDoList(props) {
           id={el.id}
           title={el.title}
           completed={el.completed}
-          // removeTodo={props.removeTodo}
-          // updateTodo={props.updateTodo}
         />
       ))}
-      {/* {props.todoList.map((el) => (
-      ))} */}
     </ul>
   );
 }
