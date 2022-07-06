@@ -23,12 +23,14 @@ function ToDoContextProvider(props) {
 
     try {
       const res = await axios.post("http://localhost:8080/todos", newTodo);
+      const newTodoList = [res.data.todo, ...todoList];
+      setTodoList(newTodoList);
     } catch (err) {
       console.log(err);
     }
 
-    const cloneTodoList = [newTodo, ...todoList];
-    setTodoList(cloneTodoList);
+    // const cloneTodoList = [newTodo, ...todoList];
+    // setTodoList(cloneTodoList);
   };
 
   const updateTodo = async (newValue, id) => {
