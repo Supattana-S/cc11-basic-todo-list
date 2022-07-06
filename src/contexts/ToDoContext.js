@@ -6,6 +6,7 @@ const ToDoContext = createContext();
 function ToDoContextProvider(props) {
   const [todoList, setTodoList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchStatus, setSearchStatus] = useState(null);
 
   useEffect(() => {
     try {
@@ -68,8 +69,15 @@ function ToDoContextProvider(props) {
     setSearchTerm(value);
   };
 
+  const changeSearchStatus = (value) => {
+    setSearchStatus(value);
+  };
+
   const filteredTodoList = todoList.filter((el) => {
-    return el.title.toLowerCase().includes(searchTerm.toLowerCase());
+    return (
+      (searchStatus === null || el.completed === searchStatus) &&
+      el.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   });
 
   return (
@@ -81,6 +89,7 @@ function ToDoContextProvider(props) {
         deleteTodo,
         searchTerm,
         changeSearchTerm,
+        changeSearchStatus,
         filteredTodoList,
       }}
     >

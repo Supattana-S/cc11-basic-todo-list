@@ -8,8 +8,8 @@ function Filter(props) {
       // changeSearchTerm={props.changeSearchTerm} searchTerm={props.searchTerm}
       />
       <FilterStatus
-        changeSearchStatus={props.changeSearchStatus}
-        searchStatus={props.searchStatus}
+      // changeSearchStatus={props.changeSearchStatus}
+      // searchStatus={props.searchStatus}
       />
     </div>
   );
