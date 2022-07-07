@@ -51,7 +51,7 @@ function TodoContextProvider(props) {
 
   const removeTodo = async (id) => {
     await axios.delete(`http://localhost:8080/todos/${id}`);
-    dispatch({ type: DELETE_TODO, id: id });
+    dispatch({ type: DELETE_TODO, value: { id: id } });
     // axios
     //   .delete(`http://localhost:8080/todos/${id}`)
     //   .then(() => {
@@ -66,6 +66,11 @@ function TodoContextProvider(props) {
   };
 
   const updateTodo = (newValue, id) => {
+    axios
+      .put(`http://localhost:8080/todos/${id}`, newValue)
+      .then()
+      .catch((err) => console.log(err));
+
     // axios
     //   .put("http://localhost:8080/todos/" + id, newValue)
     //   .then(() => {

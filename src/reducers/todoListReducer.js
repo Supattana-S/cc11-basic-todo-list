@@ -30,10 +30,15 @@ export function todoListReducer(state, action) {
       return { ...state, todoList: [action.value, ...state.todoList] };
     }
     case DELETE_TODO: {
-      const idx = state.todoList.findIndex((el) => el.id === action.id);
-      const cloneTodoList = [...state.todoList];
-      cloneTodoList.splice(idx, 1);
-      return { ...state, todoList: cloneTodoList };
+      const idx = state.todoList.findIndex((el) => el.id === action.value.id);
+      if (idx !== -1) {
+        const cloneTodoList = [...state.todoList];
+        cloneTodoList.splice(idx, 1);
+        return { ...state, todoList: cloneTodoList };
+      }
+      return state;
+    }
+    case TOGGLE_TODO_STATUS: {
     }
   }
 }
