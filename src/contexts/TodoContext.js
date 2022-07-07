@@ -22,6 +22,20 @@ function TodoContextProvider(props) {
       });
   };
 
+  const removeTodo = (id) => {
+    axios
+      .delete(`http://localhost:8080/todos/${id}`)
+      .then(() => {
+        const idx = todoList.findIndex((el) => el.id === id);
+        if (idx !== -1) {
+          const cloneTodoList = [...todoList];
+          cloneTodoList.splice(idx, 1);
+          setTodoList(cloneTodoList);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -35,7 +49,7 @@ function TodoContextProvider(props) {
   }, []);
 
   return (
-    <TodoContext.Provider value={{ todoList, createTodo }}>
+    <TodoContext.Provider value={{ todoList, createTodo, removeTodo }}>
       {props.children}
     </TodoContext.Provider>
     //in Value, we send as object. value={{ todoList: todoList }} => shorthand, value={{todoList}}

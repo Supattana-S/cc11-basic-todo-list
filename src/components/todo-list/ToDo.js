@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
 import Button from "../ui/Button";
 import ToDoInput from "./ToDoInput";
+import { TodoContext } from "../../contexts/TodoContext";
 
 function ToDo(props) {
-  const { title, completed, id, removeTodo, updateTodo } = props;
+  const { title, completed, id } = props;
+  const { removeTodo } = useContext(TodoContext);
 
   const [isEditing, setIsEditing] = useState(false);
 
