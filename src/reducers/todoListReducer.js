@@ -5,6 +5,7 @@
 // 4. UPDATE_TODO_STATUS
 // 5. CHANGE_SEARCH_TERM
 // 6. CHANGE_SEARCH_STATUS
+// 7. FETCH_TODOS
 
 export const INITIAL_TODO_LIST = {
   todoList: [],
@@ -12,4 +13,7 @@ export const INITIAL_TODO_LIST = {
   searchStatus: null,
 };
 
-export function todoListReducer(state, action) {}
+export function todoListReducer(state, action) {
+  switch (action.type) {
+  }
+}
