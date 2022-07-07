@@ -1,10 +1,29 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useReducer } from "react";
 import axios from "axios";
+
+import {
+  todoListReducer,
+  INITIAL_TODO_LIST,
+  FETCH_TODOS,
+} from "../reducers/todoListReducer";
 
 const TodoContext = createContext();
 
 function TodoContextProvider(props) {
-  const [todoList, setTodoList] = useState([]);
+  // const [todoList, setTodoList] = useState([]);
+  const [state, dispatch] = useReducer(todoListReducer, INITIAL_TODO_LIST);
+
+  useEffect(() => {
+    try {
+      const fetchData = async () => {
+        const res = await axios.get("http://localhost:8080/todos");
+        dispatch({ type: FETCH_TODOS, value: res.data.todos });
+      };
+      fetchData();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   const createTodo = (title) => {
     // axios
@@ -50,21 +69,9 @@ function TodoContextProvider(props) {
     //   .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    try {
-      const fetchData = async () => {
-        const res = await axios.get("http://localhost:8080/todos");
-        setTodoList(res.data.todos);
-      };
-      fetchData();
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
-
   return (
     <TodoContext.Provider
-      value={{ todoList, createTodo, removeTodo, updateTodo }}
+      value={{ todoList: state.todoList, createTodo, removeTodo, updateTodo }}
     >
       {props.children}
     </TodoContext.Provider>
