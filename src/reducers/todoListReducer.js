@@ -38,7 +38,16 @@ export function todoListReducer(state, action) {
       }
       return state;
     }
-    case TOGGLE_TODO_STATUS: {
+    case UPDATE_TODO_STATUS: {
+      const idx = state.todoList.findIndex((el) => el.id === action.value.id);
+      if (idx !== -1) {
+        const cloneTodoList = [...state.todoList];
+        cloneTodoList[idx] = {
+          ...cloneTodoList[idx],
+          ...action.value.newValue,
+        };
+        return { ...state, todoList: cloneTodoList };
+      }
     }
   }
 }

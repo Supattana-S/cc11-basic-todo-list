@@ -7,6 +7,7 @@ import {
   FETCH_TODOS,
   CREATE_TODO,
   DELETE_TODO,
+  UPDATE_TODO_STATUS,
 } from "../reducers/todoListReducer";
 
 const TodoContext = createContext();
@@ -68,7 +69,12 @@ function TodoContextProvider(props) {
   const updateTodo = (newValue, id) => {
     axios
       .put(`http://localhost:8080/todos/${id}`, newValue)
-      .then()
+      .then((res) => {
+        dispatch({
+          type: UPDATE_TODO_STATUS,
+          value: { newValue: newValue, id: id },
+        });
+      })
       .catch((err) => console.log(err));
 
     // axios
