@@ -6,7 +6,7 @@ import { TodoContext } from "../../contexts/TodoContext";
 
 function ToDo(props) {
   const { title, completed, id } = props;
-  const { removeTodo } = useContext(TodoContext);
+  const { removeTodo, updateTodo } = useContext(TodoContext);
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -27,8 +27,8 @@ function ToDo(props) {
           id={id}
           title={title}
           closeEditing={closeEditing}
+          completed={completed}
           // updateTodo={updateTodo}
-          // completed={completed}
         />
       ) : (
         <>
@@ -42,9 +42,9 @@ function ToDo(props) {
           <div className="btn-group">
             <Button
               color="outline-info"
-              // onClick={() =>
-              //   updateTodo({ completed: !completed, title: title }, id)
-              // }
+              onClick={() =>
+                updateTodo({ completed: !completed, title: title }, id)
+              }
             >
               <i className={`fa-solid fa-toggle-${completed ? "on" : "off"}`} />
             </Button>

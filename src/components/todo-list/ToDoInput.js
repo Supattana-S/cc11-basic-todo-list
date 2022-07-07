@@ -7,7 +7,7 @@ function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState(props.title || "");
   const [todoError, setTodoError] = useState("");
 
-  const { createTodo } = useContext(TodoContext);
+  const { createTodo, updateTodo } = useContext(TodoContext);
 
   const handleClickCreateBtn = () => {
     if (!todoInput) {
@@ -23,10 +23,7 @@ function ToDoInput(props) {
     if (!todoInput) {
       setTodoError("Title is required.");
     } else {
-      // props.updateTodo(
-      //   { title: todoInput, completed: props.completed },
-      //   props.id
-      // );
+      updateTodo({ title: todoInput, completed: props.completed }, props.id);
       props.closeEditing();
     }
   };
