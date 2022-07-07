@@ -24,8 +24,8 @@ function ToDo(props) {
           id={id}
           title={title}
           closeEditing={closeEditing}
-          updateTodo={updateTodo}
-          completed={completed}
+          // updateTodo={updateTodo}
+          // completed={completed}
         />
       ) : (
         <>
@@ -39,9 +39,9 @@ function ToDo(props) {
           <div className="btn-group">
             <Button
               color="outline-info"
-              onClick={() =>
-                updateTodo({ completed: !completed, title: title }, id)
-              }
+              // onClick={() =>
+              //   updateTodo({ completed: !completed, title: title }, id)
+              // }
             >
               <i className={`fa-solid fa-toggle-${completed ? "on" : "off"}`} />
             </Button>
