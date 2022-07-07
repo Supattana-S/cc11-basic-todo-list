@@ -5,6 +5,7 @@ import {
   todoListReducer,
   INITIAL_TODO_LIST,
   FETCH_TODOS,
+  CREATE_TODO,
 } from "../reducers/todoListReducer";
 
 const TodoContext = createContext();
@@ -26,6 +27,12 @@ function TodoContextProvider(props) {
   }, []);
 
   const createTodo = (title) => {
+    axios
+      .post("http://localhost:8080/todos", { title, completed: false })
+      .then((res) => {
+        dispatch({ type: CREATE_TODO, value: res.data.todo });
+      })
+      .catch((err) => console.log(err));
     // axios
     //   .post("http://localhost:8080/todos", {
     //     title,

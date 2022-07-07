@@ -26,5 +26,8 @@ export function todoListReducer(state, action) {
     case FETCH_TODOS: {
       return { ...state, todoList: action.value };
     }
+    case CREATE_TODO: {
+      return { ...state, todoList: [action.value, ...state.todoList] };
+    }
   }
 }
