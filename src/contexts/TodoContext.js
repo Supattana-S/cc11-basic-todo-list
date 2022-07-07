@@ -6,6 +6,7 @@ import {
   INITIAL_TODO_LIST,
   FETCH_TODOS,
   CREATE_TODO,
+  DELETE_TODO,
 } from "../reducers/todoListReducer";
 
 const TodoContext = createContext();
@@ -48,7 +49,9 @@ function TodoContextProvider(props) {
     //   });
   };
 
-  const removeTodo = (id) => {
+  const removeTodo = async (id) => {
+    await axios.delete(`http://localhost:8080/todos/${id}`);
+    dispatch({ type: DELETE_TODO, id: id });
     // axios
     //   .delete(`http://localhost:8080/todos/${id}`)
     //   .then(() => {

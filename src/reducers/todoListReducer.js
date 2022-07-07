@@ -29,5 +29,11 @@ export function todoListReducer(state, action) {
     case CREATE_TODO: {
       return { ...state, todoList: [action.value, ...state.todoList] };
     }
+    case DELETE_TODO: {
+      const idx = state.todoList.findIndex((el) => el.id === action.id);
+      const cloneTodoList = [...state.todoList];
+      cloneTodoList.splice(idx, 1);
+      return { ...state, todoList: cloneTodoList };
+    }
   }
 }
