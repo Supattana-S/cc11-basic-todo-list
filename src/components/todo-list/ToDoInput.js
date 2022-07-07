@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
 import Button from "../ui/Button";
+import { TodoContext } from "../../contexts/TodoContext";
 
 function ToDoInput(props) {
   const [todoInput, setTodoInput] = useState(props.title || "");
   const [todoError, setTodoError] = useState("");
 
-  // const resetTodoInput = () => {
-  //   setTodoInput("");
-  // };
+  const { createTodo } = useContext(TodoContext);
 
   const handleClickCreateBtn = () => {
     if (!todoInput) {
       setTodoError("Title is required.");
     } else {
-      // props.createTodo(todoInput);
+      createTodo(todoInput);
       setTodoError("");
       setTodoInput("");
     }
